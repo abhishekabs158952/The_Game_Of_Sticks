@@ -109,7 +109,42 @@ int chooseBest(struct node *var){
     }
     return 0;
 }
+int fastgame(int n,int turn,int mode){
+    if(n<=0){
+        return turn;
+    }else if(turn==0||mode==1){
+        int choose=1;
+        if((n-1)%4==1){
+            //cout<<"in 1 ";
+            choose=1;
+        }else if((n-2)%4==1){
+            //cout<<"in 2 ";
+            choose=2;
+        }else if((n-3)%4==1){
+            //cout<<"in 3 ";
+            choose=3;
+        }
+        cout<<"A.I "<<turn+1<<"     : "<<choose<<"\n";
+        if(turn==1)
+            turn=0;
+        else
+            turn=1;
+        return fastgame(n-choose,turn,mode);
+    }else{
+        int choose=1;
+        cout<<"Your Turn : ";
+        cin>>choose;
+        if(turn==1)
+            turn=0;
+        else
+            turn=1;
+        return fastgame(n-choose,turn,mode);
+    }
+}
 int game(int n,int turn,int mode){
+    if(n>30){
+        return fastgame(n,turn,mode);
+    }
     int choose;
     if(n<=0){
         return turn;
@@ -166,10 +201,16 @@ int main(){
                 }
             }else if(caseNo2==1){
                 n=14;
+                turn=rand()%2;
+                winner=game(n,turn,1);
             }else if(caseNo2==2){
                 n=21;
+                turn=rand()%2;
+                winner=game(n,turn,1);
             }else if(caseNo2==3){
                 n=53;
+                turn=rand()%2;
+                winner=game(n,turn,1);
             }
         }else if(caseNo==2){
             cout<<"n : ";
