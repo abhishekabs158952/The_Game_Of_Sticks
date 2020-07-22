@@ -1,0 +1,23 @@
+(First line no of testcases t
+ each testcase ask for case type and value of n(for casetype 2&3),
+ and (for casetype 1) again ask for casetype(1:n=14,2:n=21,3:n=53)  
+)
+input : 
+5
+1
+1
+
+1
+2
+
+
+1
+3
+
+
+2
+5
+
+
+3
+14
